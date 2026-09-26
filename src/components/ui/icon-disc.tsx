@@ -7,20 +7,13 @@ import { PressableScale } from './pressable-scale';
 
 export type IconDiscProps = {
 	children: ReactNode;
-	/** Diâmetro em pontos do layout. */
 	size?: number;
-	/** Sem `onPress` o disco é só desenho, e sai do leitor de tela. */
 	onPress?: () => void;
-	/** Continua no leitor de tela como botão, anunciado como indisponível. */
 	disabled?: boolean;
 	accessibilityLabel?: string;
 	className?: string;
 };
 
-/**
- * Disco com um glifo no meio: o sino do topo, o voltar das telas de pilha, o
- * envio do chat.
- */
 export function IconDisc({
 	children,
 	size = 36,

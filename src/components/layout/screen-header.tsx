@@ -10,19 +10,11 @@ import { useScaler } from '@/theme/scale';
 
 export type ScreenHeaderProps = {
 	title?: string;
-	/** Peça do lado direito, no lugar do disco vazio que equilibra o voltar. */
 	trailing?: ReactNode;
 };
 
 const DISC = 36;
 
-/**
- * O topo das telas de pilha: o voltar em disco, o título centrado e uma peça
- * opcional à direita.
- *
- * O voltar cai no início quando não há para onde voltar — é o caso de quem
- * chegou à tela por um link (`fordretain://system/brakes`) com a pilha vazia.
- */
 export function ScreenHeader({ title, trailing }: ScreenHeaderProps) {
 	const router = useRouter();
 	const px = useScaler();

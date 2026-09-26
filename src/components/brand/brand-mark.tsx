@@ -2,13 +2,8 @@ import Svg, { Defs, LinearGradient, Rect, Stop } from 'react-native-svg';
 import { colorAt } from '@/lib/color';
 import { ORB_STOPS } from '@/theme/gradients';
 
-/** Alturas das cinco barras, em fração do quadro — a silhueta de uma esfera. */
 const HEIGHTS = [0.46, 0.78, 1, 0.78, 0.46] as const;
 
-/**
- * A marca do app: o orbe da home reduzido a cinco barras, parado. É o glifo do
- * topo da home e o selo do assistente.
- */
 export function BrandMark({ size }: { size: number }) {
 	const slot = 24 / HEIGHTS.length;
 

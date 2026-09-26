@@ -9,7 +9,6 @@ export type AvatarProps = {
 	className?: string;
 };
 
-/** As iniciais de até dois nomes: "Vitor Alves" -> "VA". */
 function initials(name: string): string {
 	const parts = name.trim().split(/\s+/).filter(Boolean);
 	const first = parts[0]?.[0] ?? '';
@@ -17,10 +16,6 @@ function initials(name: string): string {
 	return `${first}${last}`.toUpperCase();
 }
 
-/**
- * A pessoa, em disco. Sem foto por enquanto: as iniciais no azul Ford ocupam o
- * lugar da foto do layout até o perfil ter upload.
- */
 export function Avatar({ name, size = 28, className }: AvatarProps) {
 	const px = useScaler();
 

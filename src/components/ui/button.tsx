@@ -16,12 +16,6 @@ import { COLORS } from '@/theme/colors';
 import { useScaler } from '@/theme/scale';
 import { Text } from './text';
 
-/**
- * Os botões do ford.com: pílula cheia no Ford Blue para a ação principal e
- * pílula vazada com borda no mesmo azul para a secundária. `secondary` é a
- * pílula cinza ("Compartilhar"); `ghost` é o texto solto ao lado dela
- * ("Ocultar").
- */
 const CONTAINER_VARIANTS = {
 	primary: 'bg-primary',
 	secondary: 'bg-secondary',
@@ -36,7 +30,6 @@ const LABEL_VARIANTS = {
 	ghost: 'text-muted-foreground',
 } as const;
 
-/** Cor do ripple do Android por variante (o iOS usa opacidade no lugar). */
 const RIPPLE_COLOR = {
 	primary: 'rgba(255, 255, 255, 0.18)',
 	secondary: 'rgba(0, 9, 91, 0.08)',
@@ -44,7 +37,6 @@ const RIPPLE_COLOR = {
 	ghost: 'rgba(0, 9, 91, 0.08)',
 } as const;
 
-/** O spinner não lê classe do tema, então a cor vem casada com o rótulo. */
 const SPINNER_COLOR = {
 	primary: COLORS.primaryForeground,
 	secondary: COLORS.primary,
@@ -52,12 +44,6 @@ const SPINNER_COLOR = {
 	ghost: COLORS.mutedForeground,
 } as const;
 
-/**
- * Pílulas: raio igual à metade da altura. `md` é o alvo mínimo de toque (44);
- * `lg` é a ação que fecha uma tela ("Conectar", "Agendar"). `sm` fica abaixo
- * do mínimo de propósito — só para ação que não é a principal do bloco (os
- * dois botões do cartão de procedência) — e ganha área de toque no `hitSlop`.
- */
 const SIZES = {
 	sm: { height: 32, paddingHorizontal: 14 },
 	md: { height: 44, paddingHorizontal: 18 },
@@ -71,24 +57,15 @@ export type ButtonSize = keyof typeof SIZES;
 
 export type ButtonProps = Omit<PressableProps, 'children' | 'style'> & {
 	label: string;
-	/** Glifo antes do rótulo, já no tamanho e na cor certos. */
 	icon?: ReactNode;
 	variant?: ButtonVariant;
 	size?: ButtonSize;
 	loading?: boolean;
-	/** `null` onde a tela já dispara a sua própria vibração. */
 	haptic?: HapticIntent | null;
 	className?: string;
 	style?: StyleProp<ViewStyle>;
 };
 
-/**
- * Botão do app: "smoosh" de `usePressScale`, retorno nativo (ripple no
- * Android, opacidade no iOS) e vibração no press-in.
- *
- * O `style` é ARRAY, nunca a forma de função do Pressable: com `className` na
- * mesma tag, o NativeWind descarta a função em silêncio.
- */
 export function Button({
 	label,
 	icon,
@@ -162,13 +139,7 @@ export function Button({
 				) : (
 					<>
 						{icon}
-						<Text
-							variant='label'
-							numberOfLines={1}
-							// A altura do botão é fixa: o rótulo não tem para onde crescer.
-							maxFontSizeMultiplier={1.2}
-							className={LABEL_VARIANTS[variant]}
-						>
+						<Text variant='label' numberOfLines={1} maxFontSizeMultiplier={1.2} className={LABEL_VARIANTS[variant]}>
 							{label}
 						</Text>
 					</>

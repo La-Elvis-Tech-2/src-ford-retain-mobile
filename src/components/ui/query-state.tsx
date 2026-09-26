@@ -5,17 +5,10 @@ import { Button } from './button';
 import { Text } from './text';
 
 export type QueryStateProps = {
-	/** Sem erro, é o "carregando". */
 	error?: unknown;
 	onRetry?: () => void;
 };
 
-/**
- * O lugar de um bloco que ainda não chegou — carregando ou com erro.
- *
- * O erro sempre oferece "Tentar de novo": uma tela de carro sem dados e sem
- * saída é uma tela que a pessoa fecha e não abre mais.
- */
 export function QueryState({ error, onRetry }: QueryStateProps) {
 	const px = useScaler();
 

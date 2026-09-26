@@ -10,77 +10,34 @@ import { haptic } from '@/lib/haptics';
 import { COLORS } from '@/theme/colors';
 import { useScaler } from '@/theme/scale';
 
-/**
- * Medidas da cápsula, em pontos do frame de 393: 58 de altura, 20 de margem
- * de cada lado, e cada casa com o ícone em cima e o rótulo embaixo.
- */
 const SIZES = {
 	height: 58,
 	sideMargin: 20,
 	padding: 4,
 	icon: 20,
 	badge: 16,
-	/** Quanto a cápsula flutua acima do rodapé em aparelho SEM safe area embaixo. */
 	floor: 12,
 } as const;
 
-/** O respiro entre o último bloco de uma tela rolável e o topo da cápsula. */
 const CLEARANCE_GAP = 16;
 
-/**
- * A distância do rodapé do aparelho até a BASE da cápsula.
- *
- * A cápsula assenta EM CIMA da safe area, nunca dentro dela: no iPhone, logo
- * acima do indicador de gesto; no Android edge-to-edge, acima da barra de
- * navegação — com três botões ela tem 48dp, e a cápsula afundada nela cobria
- * os botões do sistema. Sem safe area embaixo, ela flutua o `floor`.
- */
 function barBottom(insetBottom: number, px: (value: number) => number): number {
 	return Math.max(insetBottom, px(SIZES.floor));
 }
 
-/**
- * Quanto a cápsula cobre da área de conteúdo de uma aba, em pixel.
- *
- * O `Screen` já termina o conteúdo na borda da safe area de baixo; a cápsula
- * assenta nessa borda e sobe `height` a partir dela. Em aparelho sem safe area
- * embaixo, soma-se o `floor` que ela flutua. É quanto o campo do chat, preso
- * ao pé da tela, precisa subir para ficar acima dela.
- */
 export function useTabBarOverlap(): number {
 	const px = useScaler();
 	const insets = useSafeAreaInsets();
 	return barBottom(insets.bottom, px) - insets.bottom + px(SIZES.height);
 }
 
-/**
- * Quanto uma tela rolável com barra reserva no fim: a parte que a cápsula
- * cobre e um respiro para o último bloco não encostar nela.
- */
 export function useTabBarClearance(): number {
 	const px = useScaler();
 	return useTabBarOverlap() + px(CLEARANCE_GAP);
 }
 
-/** Mola da marca de seleção: assenta na casa com um pouco de peso, sem quicar. */
 const INDICATOR_SPRING = { damping: 20, stiffness: 220, mass: 0.7 } as const;
 
-/**
- * A barra de abas do layout: uma cápsula branca flutuando sobre o conteúdo,
- * com a casa ativa marcada por uma pílula azul-gelo que desliza entre as abas
- * e o ícone e o rótulo dela no Ford Blue.
- *
- * É o `tabBar` do navegador de abas, e não um componente por tela: assim ela
- * fica parada enquanto só o conteúdo troca, e a marca de seleção pode deslizar
- * de uma casa para a outra em vez de nascer no lugar novo.
- *
- * Ícone, rótulo e contador vêm das OPÇÕES de cada aba (`tabBarIcon`, `title`,
- * `tabBarBadge`), declaradas no layout das abas — a barra não conhece nenhuma
- * feature.
- *
- * Com o teclado aberto ela sai: a única aba com campo é o chat, e ali a
- * cápsula ficaria entre a conversa e o teclado.
- */
 export function TabBar({ state, descriptors, navigation, insets }: BottomTabBarProps) {
 	const px = useScaler();
 	const keyboardVisible = useKeyboardVisible();
@@ -127,9 +84,6 @@ export function TabBar({ state, descriptors, navigation, insets }: BottomTabBarP
 				}}
 			>
 				{slot > 0 ? (
-					// Estilo, e não classe: o `Animated.View` do Reanimated fica fora do
-					// NativeWind, e a classe era descartada em silêncio — a pílula
-					// entrava no fluxo, invisível, e empurrava as casas para a direita.
 					<Animated.View
 						style={[
 							{

@@ -1,13 +1,5 @@
 import * as SecureStore from 'expo-secure-store';
 
-/**
- * Armazenamento criptografado (Keychain no iOS, Keystore no Android).
- *
- * Use para credenciais e tokens. Preferências e cache de UI devem ir para
- * AsyncStorage — o SecureStore tem limite prático de alguns KB por chave.
- *
- * Chaves aceitam apenas [A-Za-z0-9._-].
- */
 export const secureStorage = {
 	getString(key: string): Promise<string | null> {
 		return SecureStore.getItemAsync(key);
@@ -27,7 +19,6 @@ export const secureStorage = {
 		try {
 			return JSON.parse(raw) as T;
 		} catch {
-			// Valor corrompido ou de uma versão anterior do app: descarta.
 			await SecureStore.deleteItemAsync(key);
 			return null;
 		}

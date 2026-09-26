@@ -1,10 +1,5 @@
 import { QueryClient } from '@tanstack/react-query';
 
-/**
- * Defaults pensados para mobile: rede instável e app indo para background.
- * `refetchOnWindowFocus` é substituído pelo `focusManager` ligado ao AppState
- * em src/providers/app-providers.tsx.
- */
 export function createQueryClient(): QueryClient {
 	return new QueryClient({
 		defaultOptions: {

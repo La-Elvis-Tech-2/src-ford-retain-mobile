@@ -11,18 +11,12 @@ import { PRESS_SCALE, usePressScale } from '@/hooks/use-press-scale';
 import { type HapticIntent, haptic } from '@/lib/haptics';
 
 export type PressableScaleProps = Omit<PressableProps, 'style'> & {
-	/** Superfície grande encolhe menos — ver `PRESS_SCALE`. */
 	scaleTo?: number;
 	haptic?: HapticIntent | null;
-	/** Vai no wrapper animado — é onde mora a largura quando ela é do pai (`flex-1`). */
 	containerStyle?: StyleProp<ViewStyle>;
 	style?: StyleProp<ViewStyle>;
 };
 
-/**
- * Qualquer superfície tocável que não é botão — linha de indicador, cartão de
- * notícia, opção de concessionária. Mesmo "smoosh" do `Button`, sem desenho.
- */
 export function PressableScale({
 	scaleTo = PRESS_SCALE.surface,
 	haptic: intent = 'tap',

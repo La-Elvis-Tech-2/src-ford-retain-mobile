@@ -1,13 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Keyboard, Platform } from 'react-native';
 
-/**
- * O teclado está na tela?
- *
- * No iOS escuta o `Will` (o teclado AINDA vai aparecer): quem esconde alguma
- * coisa por causa dele — a barra de abas — sai junto com a subida, e não um
- * quadro depois. O Android só emite o `Did`.
- */
 export function useKeyboardVisible(): boolean {
 	const [visible, setVisible] = useState(false);
 

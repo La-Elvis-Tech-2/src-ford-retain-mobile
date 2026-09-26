@@ -6,16 +6,11 @@ import { useScaler } from '@/theme/scale';
 
 export type CardProps = {
 	children: ReactNode;
-	/** Sem padding: para pilhas de linhas, cujo divisor precisa chegar perto da borda. */
 	flush?: boolean;
 	className?: string;
 	style?: StyleProp<ViewStyle>;
 };
 
-/**
- * Bloco branco sobre o cinza da página. Sem borda nem sombra: quem o separa do
- * fundo é a própria cor, como nas listas agrupadas do sistema.
- */
 export function Card({ children, flush = false, className, style }: CardProps) {
 	const px = useScaler();
 
