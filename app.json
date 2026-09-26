@@ -26,7 +26,6 @@
 				"backgroundColor": "#FFFFFF"
 			},
 			"package": "com.fordretain.app",
-			"versionCode": 1,
 			"predictiveBackGestureEnabled": false,
 			"softwareKeyboardLayoutMode": "resize",
 			"permissions": [],
