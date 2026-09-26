@@ -14,32 +14,16 @@ import { ORB_STOPS } from '@/theme/gradients';
 
 const AnimatedRect = Animated.createAnimatedComponent(Rect);
 
-/** O desenho mora num quadrado de 100: o SVG escala para qualquer diâmetro. */
 const VIEW = 100;
 const RADIUS = VIEW / 2;
 const BAR_COUNT = 21;
-/** Largura da barra em fração da casa — o resto é o vão entre elas. */
 const BAR_FILL = 0.58;
 
-/**
- * Quanto cada barra "respira": a altura oscila entre 88% e 100% da base.
- * Pouco de propósito — é um sinal de que a leitura está viva, não um
- * equalizador pedindo atenção ao lado dos números.
- */
 const BREATH = 0.12;
 const CYCLE_MS = 5200;
 
 type Bar = { x: number; width: number; height: number; color: string; phase: number };
 
-/**
- * As barras são calculadas uma vez, no módulo: a esfera é a mesma para todo
- * orbe do app, só o tamanho muda.
- *
- * A altura base de cada barra é a CORDA do círculo naquele x — é o que faz
- * as barras desenharem uma esfera —, recortada por um relevo determinístico
- * (um seno de fase fixa) para a borda sair irregular como no layout, e não
- * um círculo perfeito listrado.
- */
 const BARS: readonly Bar[] = Array.from({ length: BAR_COUNT }, (_, index) => {
 	const step = VIEW / BAR_COUNT;
 	const center = step * (index + 0.5);
@@ -74,28 +58,11 @@ function OrbBar({ bar, index, clock, id }: { bar: Bar; index: number; clock: Sha
 }
 
 export type HealthOrbProps = {
-	/**
-	 * Diâmetro em PIXELS — quem chama passa pelo `useScaler`, ou mede o espaço
-	 * que tem (a abertura encaixa o orbe no que sobra da tela).
-	 */
 	size: number;
-	/** O que fica no miolo claro — a pílula com a nota. */
 	children?: ReactNode;
-	/** Um `id` por orbe na mesma tela: dois `Svg` não podem dividir o do degradê. */
 	id?: string;
 };
 
-/**
- * O orbe — a esfera de barras verticais que resume a saúde do carro, nos
- * azuis da Ford.
- *
- * As barras respiram devagar, cada uma na sua fase. A animação roda inteira
- * na thread de UI (Reanimated), e quem pediu "reduzir movimento" no sistema
- * recebe o orbe parado: o Reanimated salta direto para o valor final.
- *
- * O miolo é lavado de branco por um degradê radial: é onde entra a nota, e
- * sem ele o número ficaria sobre as listras.
- */
 export function HealthOrb({ size, children, id = 'orb' }: HealthOrbProps) {
 	const diameter = size;
 	const clock = useSharedValue(0);
@@ -113,7 +80,6 @@ export function HealthOrb({ size, children, id = 'orb' }: HealthOrbProps) {
 			<Svg width={diameter} height={diameter} viewBox={`0 0 ${VIEW} ${VIEW}`} style={{ position: 'absolute' }}>
 				<Defs>
 					{BARS.map((bar, index) => (
-						// A lista é fixa: o índice é chave estável aqui.
 						// biome-ignore lint/suspicious/noArrayIndexKey: lista estática
 						<LinearGradient key={index} id={`${id}-bar-${index}`} x1='0' y1='0' x2='0' y2='1'>
 							<Stop offset='0' stopColor={bar.color} stopOpacity={0} />

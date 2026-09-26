@@ -7,10 +7,6 @@ import { COLORS } from '@/theme/colors';
 import { useScaler } from '@/theme/scale';
 import type { Dealer } from '../types';
 
-/**
- * Uma concessionária para escolher. O número que decide é o DESVIO da rota
- * diária, e não a distância de casa: é o que a pessoa vai rodar a mais.
- */
 export function DealerOption({
 	dealer,
 	selected,

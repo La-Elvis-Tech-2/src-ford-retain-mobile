@@ -11,7 +11,6 @@ import { slotSentence } from '../schedule';
 import type { Booking, Dealer } from '../types';
 import { BookingSummary } from './booking-summary';
 
-/** A visita já marcada, no lugar da escolha de concessionária e horário. */
 export function BookedCard({ booking, dealer }: { booking: Booking; dealer: Dealer }) {
 	const px = useScaler();
 	const cancel = useCancelBooking();

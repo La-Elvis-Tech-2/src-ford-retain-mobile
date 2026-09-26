@@ -23,7 +23,6 @@ import { useScaler } from '@/theme/scale';
 import { SAMPLE_HISTORY } from '../data/history';
 import { VehicleCard } from './vehicle-card';
 
-/** Uma linha de ajuste: ícone, título, apoio e a peça da direita. */
 function SettingRow({
 	icon,
 	title,
@@ -62,10 +61,6 @@ function SettingRow({
 	);
 }
 
-/**
- * O perfil: a pessoa, o carro, o histórico na rede e os ajustes. É a aba com a
- * foto (aqui, as iniciais) na barra.
- */
 export function ProfileScreen() {
 	const px = useScaler();
 	const router = useRouter();

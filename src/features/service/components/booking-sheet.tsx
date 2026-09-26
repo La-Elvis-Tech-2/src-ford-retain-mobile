@@ -22,11 +22,6 @@ export type BookingSheetProps = {
 	onClose: () => void;
 };
 
-/**
- * A confirmação do agendamento, em duas fases na MESMA folha: o resumo com o
- * "Confirmar" e, com a resposta, o "Agendado". Trocar de folha no meio faria a
- * tela piscar justo no momento em que a pessoa está conferindo o que fez.
- */
 export function BookingSheet({ visible, dealer, slot, totalCents, durationLabel, onClose }: BookingSheetProps) {
 	const px = useScaler();
 	const book = useBookService();
@@ -57,11 +52,6 @@ export function BookingSheet({ visible, dealer, slot, totalCents, durationLabel,
 					<Animated.View entering={ZoomIn.springify().damping(14)}>
 						<CircleCheck size={px(48)} color={COLORS.positive} strokeWidth={1.75} />
 					</Animated.View>
-					{/*
-					 * `self-stretch`: centrado na largura do próprio texto, o Android
-					 * perdia um pixel no arredondamento e mandava o "marcada" para uma
-					 * segunda linha cortada. Na largura da folha isso não acontece.
-					 */}
 					<Text variant='title' className='self-stretch text-center'>
 						Visita marcada
 					</Text>

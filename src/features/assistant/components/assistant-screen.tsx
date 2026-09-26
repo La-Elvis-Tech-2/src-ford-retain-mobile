@@ -16,19 +16,8 @@ import { ChatComposer } from './chat-composer';
 import { SuggestionChips } from './suggestion-chips';
 import { TypingIndicator } from './typing-indicator';
 
-/** Entre o campo e o topo da barra de abas — ou o teclado, quando ele está aberto. */
 const COMPOSER_GAP = 8;
 
-/**
- * O Ford Assist — a aba "Chat" do layout.
- *
- * Abre com as três falas que o assistente deixou (o "3" da aba) e as zera ao
- * ganhar foco: quem abriu a aba viu as mensagens.
- *
- * O campo fica ANCORADO acima da barra de abas, e não dentro da rolagem. Com o
- * teclado aberto a barra sai de cena (ver `TabBar`) e o campo desce para logo
- * acima do teclado.
- */
 export function AssistantScreen() {
 	const px = useScaler();
 	const scroll = useRef<ScrollView>(null);
@@ -66,10 +55,7 @@ export function AssistantScreen() {
 					showsVerticalScrollIndicator={false}
 					keyboardDismissMode={Platform.OS === 'ios' ? 'interactive' : 'on-drag'}
 					keyboardShouldPersistTaps='handled'
-					// Cada fala nova empurra a conversa para o fim, como em qualquer chat.
 					onContentSizeChange={() => scroll.current?.scrollToEnd({ animated: true })}
-					// E quando a área visível muda de altura (o teclado abrindo), a última fala
-					// continua à vista, logo acima do campo.
 					onLayout={() => scroll.current?.scrollToEnd({ animated: true })}
 				>
 					<Text variant='caption' className='self-center'>

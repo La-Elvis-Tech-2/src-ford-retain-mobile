@@ -19,19 +19,9 @@ const PROMISES = [
 	{ Icon: ShieldCheck, text: 'Guarda o histórico que vale na revenda' },
 ] as const;
 
-/** O orbe nunca passa disto, nem em tela alta; abaixo do piso ele sai. */
 const ORB_MAX = 230;
 const ORB_MIN = 96;
 
-/**
- * A abertura do app, para quem ainda não conectou o carro: o orbe grande, a
- * promessa em três linhas e uma ação só.
- *
- * O orbe ocupa o espaço que SOBRA depois do texto — medido, e não fixo. Com
- * 250pt cravados ele passava por cima do título em tela baixa (SE, Android de
- * 640dp); agora encolhe, ou sai. Se nem o texto couber (fonte do sistema no
- * máximo), a tela rola.
- */
 export function WelcomeScreen() {
 	const px = useScaler();
 	const router = useRouter();

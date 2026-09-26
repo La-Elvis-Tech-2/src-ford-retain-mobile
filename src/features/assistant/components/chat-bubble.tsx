@@ -10,11 +10,6 @@ import { useScaler } from '@/theme/scale';
 import type { ChatMessage } from '../types';
 import { AssistantAvatar } from './assistant-avatar';
 
-/**
- * Uma fala da conversa. A da pessoa vai à direita, no azul Ford; a do
- * assistente vai à esquerda, no azul-gelo, com o selo dele — e, quando a
- * resposta aponta para uma tela, o atalho embaixo do texto.
- */
 export function ChatBubble({ message }: { message: ChatMessage }) {
 	const px = useScaler();
 	const router = useRouter();
@@ -39,7 +34,6 @@ export function ChatBubble({ message }: { message: ChatMessage }) {
 					paddingHorizontal: px(13),
 					paddingVertical: px(9),
 					borderRadius: radius,
-					// O canto do lado de quem fala fica mais fechado: é o "rabinho" do balão.
 					borderBottomRightRadius: mine ? px(6) : radius,
 					borderBottomLeftRadius: mine ? radius : px(6),
 					gap: px(8),

@@ -14,16 +14,10 @@ export type SlotPickerProps = {
 
 const COLUMNS = 3;
 
-/**
- * Os horários em linhas de três. Cada linha é montada à parte, com as casas em
- * `flex: 1`: com largura fixa e `flex-wrap`, a grade não fechava na margem
- * direita — sobrava um vão diferente em cada aparelho.
- */
 function rowsOf(slots: ServiceSlot[]): (ServiceSlot | null)[][] {
 	const rows: (ServiceSlot | null)[][] = [];
 	for (let index = 0; index < slots.length; index += COLUMNS) {
 		const row: (ServiceSlot | null)[] = slots.slice(index, index + COLUMNS);
-		// A última linha é completada com casas vazias, para não esticar as que sobram.
 		while (row.length < COLUMNS) {
 			row.push(null);
 		}
@@ -32,7 +26,6 @@ function rowsOf(slots: ServiceSlot[]): (ServiceSlot | null)[][] {
 	return rows;
 }
 
-/** Os horários com vaga, em cartões de três linhas: dia da semana, data e hora. */
 export function SlotPicker({ slots, selectedId, onSelect }: SlotPickerProps) {
 	const px = useScaler();
 	const gap = px(8);

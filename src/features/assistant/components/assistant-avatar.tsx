@@ -2,7 +2,6 @@ import { View } from 'react-native';
 import { BrandMark } from '@/components/brand/brand-mark';
 import { useScaler } from '@/theme/scale';
 
-/** O selo do Ford Assist: a marca do app num disco claro. */
 export function AssistantAvatar({ size = 32 }: { size?: number }) {
 	const px = useScaler();
 

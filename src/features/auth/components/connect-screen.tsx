@@ -14,12 +14,6 @@ import { useScaler } from '@/theme/scale';
 import { useConnectVehicle } from '../hooks/use-session';
 import { formatPlateInput, isValidPlate, normalizePlate } from '../validation';
 
-/**
- * Conectar o carro pela placa.
- *
- * Não navega ao terminar: com a sessão aberta, o guard das rotas públicas
- * leva a pessoa para a home sozinho (ver app/(public)/_layout.tsx).
- */
 export function ConnectScreen() {
 	const px = useScaler();
 	const connectVehicle = useConnectVehicle();

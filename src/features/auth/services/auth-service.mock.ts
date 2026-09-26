@@ -7,13 +7,6 @@ function delay(ms: number): Promise<void> {
 	return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-/**
- * Sessão falsa para o app rodar sem backend.
- *
- * Qualquer placa válida encontra a mesma Ranger do laudo. A exceção é
- * `AAA0000`, que falha de propósito: sem ela o estado de erro da tela não
- * teria como ser visto rodando o app.
- */
 export const mockAuthService: AuthService = {
 	async connectVehicle({ plate }: ConnectVehicleInput) {
 		await delay(LATENCY_MS);

@@ -11,11 +11,6 @@ export type SuggestionChipsProps = {
 	disabled?: boolean;
 };
 
-/**
- * As perguntas prontas, numa fileira que rola de lado. A fileira vai de borda
- * a borda — sai da margem da tela — para a pílula cortada na direita avisar
- * que há mais.
- */
 export function SuggestionChips({ suggestions, onPick, disabled = false }: SuggestionChipsProps) {
 	const px = useScaler();
 	const gutter = px(SCREEN_GUTTER);

@@ -11,10 +11,6 @@ export type ScorePillProps = {
 	delta: number;
 };
 
-/**
- * A pílula clara no miolo do orbe: o rótulo em cima e a nota embaixo, com a
- * variação da semana pendurada no canto — o "62% +2" do layout.
- */
 export function ScorePill({ label, score, delta }: ScorePillProps) {
 	const px = useScaler();
 

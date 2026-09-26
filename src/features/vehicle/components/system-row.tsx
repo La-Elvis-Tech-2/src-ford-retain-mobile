@@ -13,15 +13,6 @@ import { SystemIcon } from './component-icon';
 const HEIGHT = 42;
 const ICON_DISC = 28;
 
-/**
- * Uma linha de sistema, ao lado do orbe: o ícone num disco, o nome pequeno em
- * cima, a nota e a variação da semana, e o "›" que abre o sistema.
- *
- * A linha é TINGIDA até a própria nota — 60% da largura para uma nota 60 —,
- * na cor do pior status do sistema, dissolvendo para a direita. É a leitura
- * de relance do layout; o número e o ícone de status continuam ali para quem
- * não distingue as cores.
- */
 export function SystemRow({ system, onPress }: { system: SystemSummary; onPress: () => void }) {
 	const px = useScaler();
 	const meta = STATUS_META[system.status];
@@ -34,8 +25,6 @@ export function SystemRow({ system, onPress }: { system: SystemSummary; onPress:
 			accessibilityLabel={`${system.name}: ${system.score}%, ${meta.label}. ${formatDelta(system.delta)} na semana.`}
 			accessibilityHint='Abre os componentes do sistema'
 			className='flex-row items-center overflow-hidden rounded-full border border-border bg-card'
-			// `minHeight`, e não altura fixa: com a fonte do sistema maior, a linha
-			// cresce em vez de cortar o número.
 			style={{ minHeight: px(HEIGHT), paddingVertical: px(3), paddingLeft: px(7), paddingRight: px(8), gap: px(7) }}
 		>
 			<View className='absolute top-0 bottom-0 left-0' style={{ width: `${system.score}%` }}>

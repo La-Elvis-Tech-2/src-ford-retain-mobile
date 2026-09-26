@@ -17,14 +17,6 @@ import { DealerOption } from './dealer-option';
 import { EstimateCard } from './estimate-card';
 import { SlotPicker } from './slot-picker';
 
-/**
- * A aba da revisão — o laudo virando visita: o orçamento, a concessionária no
- * caminho e o horário.
- *
- * A primeira concessionária vem escolhida (a de menor desvio), e o horário
- * NÃO: marcar um horário é a decisão que a pessoa precisa tomar, e um
- * pré-selecionado viraria agendamento por descuido.
- */
 export function ServiceScreen() {
 	const px = useScaler();
 	const scheduled = useBookingWithDealer();
@@ -33,14 +25,11 @@ export function ServiceScreen() {
 	const [confirming, setConfirming] = useState(false);
 
 	const dealer = SAMPLE_DEALERS.find((candidate) => candidate.id === dealerId) ?? SAMPLE_DEALERS[0];
-	// A agenda conta a partir de hoje; recalcula só quando a concessionária muda.
 	const slots = useMemo(() => (dealer ? upcomingSlots(dealer, new Date()) : []), [dealer]);
 	const { totalCents } = packageTotals(SAMPLE_PACKAGE);
 
 	const closeSheet = () => {
 		setConfirming(false);
-		// Com a visita marcada, o horário escolhido já virou reserva: quem
-		// remarcar começa do zero.
 		if (scheduled) {
 			setSlot(null);
 		}
@@ -48,7 +37,6 @@ export function ServiceScreen() {
 
 	const chooseDealer = (id: string) => {
 		setDealerId(id);
-		// O horário é da concessionária: trocar uma invalida o outro.
 		setSlot(null);
 	};
 
@@ -97,11 +85,6 @@ export function ServiceScreen() {
 				)}
 			</ScreenScrollView>
 
-			{/*
-			 * Fora do bloco de escolha de propósito: a reserva confirmada troca o
-			 * bloco pelo cartão da visita, e a folha precisa continuar montada
-			 * para mostrar o "Visita marcada".
-			 */}
 			{dealer ? (
 				<BookingSheet
 					visible={confirming}

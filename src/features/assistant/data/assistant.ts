@@ -1,11 +1,6 @@
 import { ROUTES } from '@/routes/routes';
 import type { AssistantReply, ChatMessage } from '../types';
 
-/**
- * As três falas que o assistente já deixou antes de a pessoa abrir o chat. São
- * elas o "3" em cima do ícone da aba: o chat não é só onde se pergunta, é onde
- * o carro avisa.
- */
 export const PROACTIVE_MESSAGES: ChatMessage[] = [
 	{
 		id: 'proactive-oil',
@@ -25,7 +20,6 @@ export const PROACTIVE_MESSAGES: ChatMessage[] = [
 	},
 ];
 
-/** As perguntas prontas embaixo da conversa. */
 export const SUGGESTIONS = [
 	'O que vence primeiro?',
 	'Quanto custa a revisão?',
@@ -35,16 +29,6 @@ export const SUGGESTIONS = [
 
 type Rule = { match: RegExp; reply: AssistantReply };
 
-/**
- * Respostas por palavra-chave, na ordem: a primeira regra que casar responde.
- * As mais específicas vêm antes ("esperar" antes de "pastilha"), senão "dá para
- * esperar a pastilha?" cairia na explicação da pastilha, e não no custo de
- * adiar. Pelo mesmo motivo a revenda vem antes do preço: "quanto vale meu
- * histórico?" tem o "quanto" do preço, mas pergunta da revenda.
- *
- * TODO(api): trocar pela resposta do modelo, que lê o laudo inteiro. Os
- * números aqui repetem o laudo de src/features/vehicle/data/report.ts.
- */
 const RULES: Rule[] = [
 	{
 		match: /esperar|adiar|depois|segurar/,

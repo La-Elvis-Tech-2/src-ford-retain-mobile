@@ -15,12 +15,8 @@ const DOTS = [0, 1, 2] as const;
 
 function Dot({ clock, index }: { clock: SharedValue<number>; index: number }) {
 	const px = useScaler();
-	// Medido AQUI, fora do worklet: `px` é função do JS, e chamá-la na thread de
-	// UI derruba o app no release ("Tried to synchronously call a Remote
-	// Function"). O worklet só pode capturar o número.
 	const rise = px(3);
 	const style = useAnimatedStyle(() => {
-		// Cada ponto sobe no seu terço do ciclo — a onda do "digitando".
 		const phase = (clock.value - index / 3 + 1) % 1;
 		const lift = phase < 0.5 ? Math.sin(phase * Math.PI * 2) : 0;
 		return { opacity: 0.35 + 0.65 * lift, transform: [{ translateY: -rise * lift }] };
@@ -33,7 +29,6 @@ function Dot({ clock, index }: { clock: SharedValue<number>; index: number }) {
 	);
 }
 
-/** "Digitando…" do assistente: três pontos em onda, no balão dele. */
 export function TypingIndicator() {
 	const px = useScaler();
 	const clock = useSharedValue(0);

@@ -9,7 +9,6 @@ export function useBooking(): Booking | null {
 	return useBookingStore((state) => state.booking);
 }
 
-/** A visita marcada com a concessionária dela resolvida — o que as telas mostram. */
 export function useBookingWithDealer(): { booking: Booking; dealer: Dealer } | null {
 	const booking = useBooking();
 
@@ -19,7 +18,6 @@ export function useBookingWithDealer(): { booking: Booking; dealer: Dealer } | n
 	}, [booking]);
 }
 
-/** Reserva o horário e, só com a resposta em mãos, publica a visita no store. */
 export function useBookService() {
 	const setBooking = useBookingStore((state) => state.setBooking);
 

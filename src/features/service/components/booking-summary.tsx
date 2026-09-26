@@ -2,7 +2,6 @@ import { View } from 'react-native';
 import { Text } from '@/components/ui/text';
 import { useScaler } from '@/theme/scale';
 
-/** As linhas "rótulo — valor" do resumo de uma visita. */
 export function BookingSummary({ rows }: { rows: { label: string; value: string }[] }) {
 	const px = useScaler();
 

@@ -1,7 +1,6 @@
 import { ROUTES } from '@/routes/routes';
 import type { AppNotification } from '../types';
 
-/** TODO(api): trocar pelos avisos que o backend gerar a partir da leitura dos módulos. */
 export const SAMPLE_NOTIFICATIONS: AppNotification[] = [
 	{
 		id: 'oil-overdue',

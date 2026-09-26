@@ -2,7 +2,6 @@ import type { Href } from 'expo-router';
 
 export type ChatRole = 'user' | 'assistant';
 
-/** Um atalho dentro da fala do assistente — "Ver revisão recomendada". */
 export type ChatAction = {
 	label: string;
 	route: Href;

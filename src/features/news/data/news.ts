@@ -1,11 +1,5 @@
 import type { NewsItem } from '../types';
 
-/**
- * As novidades da home — a seção "Новини" do layout, com o que a rede Ford
- * tem para dizer ao dono de uma Ranger.
- *
- * TODO(api): trocar pelo feed da rede, filtrado pelo modelo e pela região.
- */
 export const SAMPLE_NEWS: NewsItem[] = [
 	{
 		id: 'recall-check',

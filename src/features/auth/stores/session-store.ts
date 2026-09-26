@@ -6,9 +6,7 @@ import type { AuthSession, AuthUser, ConnectVehicleInput } from '../types';
 
 const SESSION_STORAGE_KEY = 'fordretain.session';
 
-export type SessionStatus =
-	/** Ainda lendo o storage no boot — não decida rota nesse estado. */
-	'bootstrapping' | 'authenticated' | 'unauthenticated';
+export type SessionStatus = 'bootstrapping' | 'authenticated' | 'unauthenticated';
 
 export type SessionState = {
 	status: SessionStatus;
@@ -28,11 +26,7 @@ export const useSessionStore = create<SessionState>((set, get) => ({
 	vehicleId: null,
 	accessToken: null,
 
-	/** Restaura a sessão persistida. Chamado uma vez, no layout raiz. */
 	async bootstrap() {
-		// Keychain/Keystore podem falhar (aparelho bloqueado no boot, storage
-		// corrompido). Cair como deslogado é ruim; ficar preso no splash à
-		// espera de uma promise que rejeitou é pior.
 		const stored = await secureStorage.getJson<AuthSession>(SESSION_STORAGE_KEY).catch(() => null);
 
 		if (!stored) {
@@ -62,7 +56,6 @@ export const useSessionStore = create<SessionState>((set, get) => ({
 
 	async signOut() {
 		if (get().status === 'authenticated') {
-			// Falha de rede no logout não pode prender a pessoa no app.
 			await authService.signOut().catch(() => undefined);
 		}
 
@@ -71,8 +64,6 @@ export const useSessionStore = create<SessionState>((set, get) => ({
 	},
 }));
 
-// Liga o cliente HTTP à sessão sem criar import circular: o store conhece o
-// cliente, o cliente só conhece estas duas funções.
 httpClient.configure({
 	getAccessToken: () => useSessionStore.getState().accessToken,
 	onUnauthorized: () => {

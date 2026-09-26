@@ -11,10 +11,6 @@ import { ROUTES } from '@/routes/routes';
 import { COLORS } from '@/theme/colors';
 import { useScaler } from '@/theme/scale';
 
-/**
- * A pílula do topo da home: a marca, o carro que está sendo lido e o sino. O
- * ponto azul do sino some ao abrir os avisos.
- */
 export function HomeTopBar({ vehicle }: { vehicle: Vehicle | null }) {
 	const px = useScaler();
 	const router = useRouter();

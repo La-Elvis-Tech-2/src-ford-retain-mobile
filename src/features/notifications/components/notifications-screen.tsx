@@ -55,7 +55,6 @@ function NotificationRow({ item }: { item: AppNotification }) {
 	);
 }
 
-/** Os avisos do sino da home. Abrir a lista apaga o ponto do sino. */
 export function NotificationsScreen() {
 	const px = useScaler();
 	const items = useNotificationsStore((state) => state.items);

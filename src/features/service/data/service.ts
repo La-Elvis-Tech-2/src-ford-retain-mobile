@@ -1,11 +1,5 @@
 import type { Dealer, ServicePackage } from '../types';
 
-/**
- * O pacote recomendado para o laudo de exemplo, com valores em centavos.
- *
- * TODO(api): o backend monta o pacote a partir do laudo e da tabela da
- * concessionária escolhida.
- */
 export const SAMPLE_PACKAGE: ServicePackage = {
 	title: 'Revisão recomendada',
 	subtitle: 'Resolve os 2 itens urgentes e os 2 filtros na mesma visita.',
@@ -32,11 +26,6 @@ export const SAMPLE_PACKAGE: ServicePackage = {
 	},
 };
 
-/**
- * As três concessionárias próximas da rota diária do cliente, com o desvio
- * medido a partir dela. As vagas são por dia da semana e viram datas a partir de hoje
- * (ver `upcomingSlots`) — uma data fixa aqui envelheceria junto com o mock.
- */
 export const SAMPLE_DEALERS: Dealer[] = [
 	{
 		id: 'tatuape',

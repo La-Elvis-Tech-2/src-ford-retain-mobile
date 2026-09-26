@@ -9,7 +9,6 @@ import { useScaler } from '@/theme/scale';
 import { SAMPLE_NEWS } from '../data/news';
 import { NewsArt } from './news-art';
 
-/** Uma novidade aberta. */
 export function NewsDetailScreen() {
 	const px = useScaler();
 	const { newsId } = useLocalSearchParams<{ newsId: string }>();

@@ -9,7 +9,6 @@ const RANGER = require('../../../../assets/images/ford-ranger.png');
 const PHOTO_RATIO = 539 / 1024;
 const PHOTO_WIDTH = 248;
 
-/** O carro da conta: a foto, o modelo e a ficha em quatro campos. */
 export function VehicleCard({ vehicle }: { vehicle: Vehicle }) {
 	const px = useScaler();
 	const specs = [
@@ -25,8 +24,6 @@ export function VehicleCard({ vehicle }: { vehicle: Vehicle }) {
 				<Image
 					source={RANGER}
 					resizeMode='contain'
-					// Medidas explícitas, na proporção do arquivo (1024x539): largura em %
-					// com `aspectRatio` fazia a caixa crescer até a altura nativa da foto.
 					style={{ width: px(PHOTO_WIDTH), height: px(PHOTO_WIDTH * PHOTO_RATIO) }}
 					accessibilityIgnoresInvertColors
 					accessibilityLabel={`Foto ilustrativa da ${vehicle.model}`}

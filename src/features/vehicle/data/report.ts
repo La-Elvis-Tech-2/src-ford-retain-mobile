@@ -1,15 +1,5 @@
 import type { HealthReport } from '../types';
 
-/**
- * O laudo de exemplo da Ranger: os mesmos componentes, medidas e explicações
- * do laudo web que o cliente recebe pelo WhatsApp.
- *
- * O app acrescenta a NOTA de cada componente, que alimenta as barras e as
- * variações. As notas caem no mesmo status do laudo web (ver `statusOf`):
- * óleo e pastilha urgentes, filtros e bateria em atenção, o resto em dia.
- *
- * TODO(api): trocar pela leitura dos módulos que o backend da rede devolver.
- */
 export const SAMPLE_REPORT: HealthReport = {
 	vehicle: {
 		id: 'ranger-4417',

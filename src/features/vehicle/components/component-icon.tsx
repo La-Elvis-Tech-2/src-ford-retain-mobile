@@ -14,7 +14,6 @@ import {
 } from 'lucide-react-native';
 import type { ComponentIconKey, SystemId } from '../types';
 
-/** O ícone de cada componente — o mesmo do laudo web, para o cliente reconhecer o item. */
 const COMPONENT_ICONS: Record<ComponentIconKey, LucideIcon> = {
 	oil: Droplet,
 	'air-filter': Wind,

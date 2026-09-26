@@ -9,13 +9,11 @@ import { useScaler } from '@/theme/scale';
 
 export type ChatComposerProps = {
 	onSend: (text: string) => void;
-	/** Enquanto o assistente responde, o campo continua aberto mas o envio espera. */
 	busy?: boolean;
 };
 
 const MAX_LENGTH = 500;
 
-/** O campo da conversa: uma pílula branca com o envio em disco no fim. */
 export function ChatComposer({ onSend, busy = false }: ChatComposerProps) {
 	const px = useScaler();
 	const [text, setText] = useState('');

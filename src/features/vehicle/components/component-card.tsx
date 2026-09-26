@@ -14,11 +14,6 @@ import { ComponentIcon } from './component-icon';
 import { LifeBar } from './life-bar';
 import { StatusBadge } from './status-badge';
 
-/**
- * Um componente do carro: nome, selo de status, a medida que justifica a nota
- * e a barra. O toque abre a explicação — o "por quê" do laudo —, que fica
- * fechada para a lista caber de relance.
- */
 export function ComponentCard({ component }: { component: VehicleComponent }) {
 	const px = useScaler();
 	const [open, setOpen] = useState(false);

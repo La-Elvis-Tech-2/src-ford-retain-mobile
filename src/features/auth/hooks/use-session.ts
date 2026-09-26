@@ -1,8 +1,6 @@
 import { useSessionStore } from '../stores/session-store';
 import type { AuthUser } from '../types';
 
-/** Seletores prontos — evitam re-render por mudanças não relacionadas. */
-
 export function useSessionStatus() {
 	return useSessionStore((state) => state.status);
 }

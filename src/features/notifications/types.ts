@@ -8,6 +8,5 @@ export type AppNotification = {
 	title: string;
 	body: string;
 	timeLabel: string;
-	/** Para onde o toque leva. Sem destino, o aviso é só leitura. */
 	target?: Href;
 };

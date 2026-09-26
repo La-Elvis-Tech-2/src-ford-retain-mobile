@@ -5,7 +5,6 @@ import { useScaler } from '@/theme/scale';
 import { STATUS_META } from '../theme';
 import type { ComponentStatus } from '../types';
 
-/** O selo de status: ícone + rótulo sobre o fundo suave da cor. */
 export function StatusBadge({ status, label }: { status: ComponentStatus; label?: string }) {
 	const px = useScaler();
 	const meta = STATUS_META[status];

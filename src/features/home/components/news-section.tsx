@@ -5,7 +5,6 @@ import { SAMPLE_NEWS } from '@/features/news/data/news';
 import { ITEM_GAP } from '@/theme/layout';
 import { useScaler } from '@/theme/scale';
 
-/** "Novidades" — o feed embaixo do painel. */
 export function NewsSection() {
 	const px = useScaler();
 

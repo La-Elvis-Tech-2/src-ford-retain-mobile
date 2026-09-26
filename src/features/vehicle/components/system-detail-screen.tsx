@@ -20,7 +20,6 @@ import { ComponentCard } from './component-card';
 import { SystemIcon } from './component-icon';
 import { StatusBadge } from './status-badge';
 
-/** "1 urgente · 2 em atenção · 3 em dia", pulando o que for zero. */
 function breakdown(system: SystemSummary): string {
 	const counts = countByStatus(system.components);
 	return [
@@ -32,10 +31,6 @@ function breakdown(system: SystemSummary): string {
 		.join(' · ');
 }
 
-/**
- * Um sistema do carro aberto: a nota, a variação e cada componente dele, do
- * mais grave para o mais tranquilo. É a porta de cada linha da home.
- */
 export function SystemDetailScreen() {
 	const px = useScaler();
 	const router = useRouter();
@@ -88,11 +83,6 @@ export function SystemDetailScreen() {
 						<View className='flex-1' style={{ gap: px(4) }}>
 							<View className='flex-row items-baseline' style={{ gap: px(6) }}>
 								<Text variant='score'>{system.score}%</Text>
-								{/*
-								 * `flex-1`: com a largura medida do próprio texto, o Android
-								 * arredondava para baixo e quebrava o "semana" numa segunda
-								 * linha que a altura de uma linha cortava.
-								 */}
 								<Text variant='muted' font='semibold' className={cn('flex-1', deltaClass(system.delta))}>
 									{formatDelta(system.delta)} na semana
 								</Text>

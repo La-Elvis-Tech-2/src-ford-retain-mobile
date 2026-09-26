@@ -6,21 +6,12 @@ import type { NewsArt as NewsArtKind } from '../types';
 
 const RANGER = require('../../../../assets/images/ford-ranger-640.png');
 
-/**
- * O fundo de cada arte, em cor chapada da marca — como os blocos do ford.com.
- * O da Ranger é CLARO: a picape da foto é preta, e sobre o Ford Blue ela sumia.
- */
 const BACKDROPS: Record<NewsArtKind, string> = {
 	ranger: '#E6ECF5',
 	recall: COLORS.primary,
 	battery: COLORS.accent,
 };
 
-/**
- * O topo de um cartão de notícia. Sem banco de fotos, a arte é desenhada: a
- * cor da marca com o ícone do assunto — ou a própria Ranger, recortada, no
- * lançamento.
- */
 export function NewsArt({ art, height }: { art: NewsArtKind; height: number }) {
 	const px = useScaler();
 

@@ -12,14 +12,6 @@ import { COLORS } from '@/theme/colors';
 import { CARD_RADIUS } from '@/theme/layout';
 import { useScaler } from '@/theme/scale';
 
-/**
- * A frase do assistente embaixo do orbe — o "Mira бачить" do layout, num
- * azul-gelo chapado da marca.
- *
- * Ela muda com a visita: antes de marcar, é o que o assistente percebeu e o
- * convite para a revisão; depois, é o lembrete da visita marcada. As duas
- * levam à aba da revisão.
- */
 export function InsightCard({ insight }: { insight: Insight }) {
 	const px = useScaler();
 	const router = useRouter();
@@ -41,7 +33,6 @@ export function InsightCard({ insight }: { insight: Insight }) {
 			style={{ borderRadius: px(CARD_RADIUS), padding: px(14), gap: px(8) }}
 		>
 			<View className='flex-row items-start' style={{ gap: px(10) }}>
-				{/* O selo do Ford Assist: quem fala aqui é o assistente do app. */}
 				<View style={{ paddingTop: px(1) }}>
 					<BrandMark size={px(18)} />
 				</View>

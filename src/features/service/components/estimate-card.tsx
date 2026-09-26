@@ -8,15 +8,8 @@ import { useScaler } from '@/theme/scale';
 import { laterMultiplier, packageTotals } from '../schedule';
 import type { ServicePackage } from '../types';
 
-/** As duas séries da barra de composição — o azul Ford e um azul claro dele. */
 const SERIES = { parts: COLORS.accent, labor: '#9DBFEF' } as const;
 
-/**
- * O orçamento da revisão: o total, do que ele é feito e quanto custa esperar.
- *
- * A composição é UMA barra dividida, sem eixo: peças e mão de obra somam o
- * total, e a legenda traz os valores escritos. É a mesma leitura do site.
- */
 export function EstimateCard({ pkg }: { pkg: ServicePackage }) {
 	const px = useScaler();
 	const { partsCents, laborCents, totalCents } = packageTotals(pkg);

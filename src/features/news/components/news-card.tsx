@@ -8,13 +8,6 @@ import { useScaler } from '@/theme/scale';
 import type { NewsItem } from '../types';
 import { NewsArt } from './news-art';
 
-/**
- * Um cartão do feed: a arte em cima, e a etiqueta, o título e a data embaixo.
- *
- * É o bloco mais COMPACTO da home, de propósito: as novidades são o que vem
- * depois do carro, e não podem disputar tamanho com a saúde dele. Por isso a
- * arte é baixa e o texto fica um degrau abaixo do resto do app.
- */
 export function NewsCard({ item }: { item: NewsItem }) {
 	const px = useScaler();
 	const router = useRouter();

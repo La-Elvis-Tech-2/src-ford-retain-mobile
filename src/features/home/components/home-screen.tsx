@@ -17,17 +17,8 @@ import { InsightCard } from './insight-card';
 import { NewsSection } from './news-section';
 import { ProvenanceCard } from './provenance-card';
 
-/** Diâmetro do orbe ao lado das quatro linhas, em pontos do frame de 393. */
 const ORB_SIZE = 140;
 
-/**
- * A home — a saúde do carro em uma tela.
- *
- * Em cima, o PAINEL BRANCO que continua a faixa branca da barra de status e
- * termina em cantos arredondados: a marca e o sino, o orbe com a saúde geral,
- * os quatro sistemas e a frase do assistente. Embaixo, sobre o cinza, o cartão de
- * procedência e as novidades.
- */
 export function HomeScreen() {
 	const px = useScaler();
 	const router = useRouter();
@@ -50,11 +41,6 @@ export function HomeScreen() {
 						gap: px(16),
 					}}
 				>
-					{/*
-					 * O branco continua ACIMA do painel: no puxão do iOS, a rolagem
-					 * desce além do topo, e sem isso aparecia uma faixa cinza entre
-					 * a barra de status e o painel.
-					 */}
 					<View className='absolute right-0 left-0 bg-card' style={{ top: -1000, height: 1000 }} />
 
 					<HomeTopBar vehicle={overview?.report.vehicle ?? null} />
