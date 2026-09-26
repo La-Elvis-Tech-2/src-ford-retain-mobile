@@ -74,7 +74,9 @@ export function NotificationsScreen() {
 				{items.length === 0 ? (
 					<View className='items-center' style={{ gap: px(8), paddingVertical: px(48) }}>
 						<Bell size={px(28)} color={COLORS.subtleForeground} />
-						<Text variant='muted'>Nenhum aviso por enquanto.</Text>
+						<Text variant='muted' className='self-stretch text-center'>
+							Nenhum aviso por enquanto.
+						</Text>
 					</View>
 				) : (
 					<View style={{ gap: px(ITEM_GAP) }}>

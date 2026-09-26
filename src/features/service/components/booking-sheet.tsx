@@ -57,10 +57,15 @@ export function BookingSheet({ visible, dealer, slot, totalCents, durationLabel,
 					<Animated.View entering={ZoomIn.springify().damping(14)}>
 						<CircleCheck size={px(48)} color={COLORS.positive} strokeWidth={1.75} />
 					</Animated.View>
-					<Text variant='title' className='text-center'>
+					{/*
+					 * `self-stretch`: centrado na largura do próprio texto, o Android
+					 * perdia um pixel no arredondamento e mandava o "marcada" para uma
+					 * segunda linha cortada. Na largura da folha isso não acontece.
+					 */}
+					<Text variant='title' className='self-stretch text-center'>
 						Visita marcada
 					</Text>
-					<Text variant='muted' className='text-center'>
+					<Text variant='muted' className='self-stretch text-center'>
 						{dealer.name}, {slotSentence(slot)}. A gente te lembra na véspera, e o laudo vai junto para a oficina.
 					</Text>
 					<View className='w-full' style={{ paddingTop: px(8) }}>

@@ -29,10 +29,10 @@ export function QueryState({ error, onRetry }: QueryStateProps) {
 
 	return (
 		<View className='items-center' style={{ paddingVertical: px(32), gap: px(8) }}>
-			<Text variant='subtitle' className='text-center'>
+			<Text variant='subtitle' className='self-stretch text-center'>
 				Não conseguimos ler seu carro agora
 			</Text>
-			<Text variant='muted' className='text-center'>
+			<Text variant='muted' className='self-stretch text-center'>
 				Confira a conexão e tente de novo em instantes.
 			</Text>
 			{onRetry ? (

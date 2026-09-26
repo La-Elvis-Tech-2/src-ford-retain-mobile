@@ -18,10 +18,10 @@ export default function NotFoundScreen() {
 	return (
 		<Screen>
 			<View className='flex-1 items-center justify-center' style={{ gap: px(ITEM_GAP) }}>
-				<Text variant='title' className='text-center'>
+				<Text variant='title' className='self-stretch text-center'>
 					Página não encontrada
 				</Text>
-				<Text variant='muted' className='text-center'>
+				<Text variant='muted' className='self-stretch text-center'>
 					O endereço que você abriu não existe mais.
 				</Text>
 				<View className='w-full' style={{ paddingTop: px(SECTION_GAP) }}>
