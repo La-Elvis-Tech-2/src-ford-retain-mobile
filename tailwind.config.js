@@ -1,0 +1,44 @@
+/**
+ * Fonte da verdade do design system.
+ *
+ * As cores NÃO ficam aqui: elas são CSS variables declaradas em `global.css`,
+ * o que o NativeWind v4 suporta em nativo. Um lugar só para trocar a paleta.
+ *
+ * As fontes também não: cada peso da Archivo é uma FAMÍLIA embarcada própria,
+ * então as classes de peso do Tailwind não selecionam nada — quem resolve é
+ * `FONT_STYLE` em src/theme/fonts.ts, aplicado pelo `Text`.
+ */
+
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+	content: ['./app/**/*.{ts,tsx}', './src/**/*.{ts,tsx}'],
+	presets: [require('nativewind/preset')],
+	theme: {
+		extend: {
+			colors: {
+				background: 'hsl(var(--background))',
+				foreground: 'hsl(var(--foreground))',
+				card: 'hsl(var(--card))',
+				primary: 'hsl(var(--primary))',
+				'primary-foreground': 'hsl(var(--primary-foreground))',
+				accent: 'hsl(var(--accent))',
+				'accent-soft': 'hsl(var(--accent-soft))',
+				secondary: 'hsl(var(--secondary))',
+				'secondary-foreground': 'hsl(var(--secondary-foreground))',
+				muted: 'hsl(var(--muted))',
+				'muted-foreground': 'hsl(var(--muted-foreground))',
+				'subtle-foreground': 'hsl(var(--subtle-foreground))',
+				border: 'hsl(var(--border))',
+				field: 'hsl(var(--field))',
+				'field-border': 'hsl(var(--field-border))',
+				positive: 'hsl(var(--positive))',
+				'positive-soft': 'hsl(var(--positive-soft))',
+				warning: 'hsl(var(--warning))',
+				'warning-soft': 'hsl(var(--warning-soft))',
+				negative: 'hsl(var(--negative))',
+				'negative-soft': 'hsl(var(--negative-soft))',
+			},
+		},
+	},
+	plugins: [],
+};
