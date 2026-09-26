@@ -1,0 +1,13 @@
+# O pnpm atual só lê auth e registry do `.npmrc`: qualquer outra configuração
+# precisa morar aqui, senão é ignorada em silêncio na máquina de quem instala.
+#
+# React Native/Metro não resolvem os symlinks aninhados do layout isolado do
+# pnpm. `hoisted` deixa o node_modules plano, igual npm/yarn — é o que faz o
+# `react-native-css-interop/jsx-runtime`, injetado pelo babel do NativeWind,
+# ser encontrado.
+#
+# Por isso o `react-native-css-interop` é dependência direta no package.json, e
+# a versão tem que ser EXATAMENTE a que o `nativewind` fixa (4.2.6 -> 0.2.7).
+# Se divergir, o nativewind ganha uma cópia própria aninhada: o CSS é injetado
+# numa cópia e o JSX lê da outra, e todo `className` some sem erro nenhum.
+nodeLinker: hoisted

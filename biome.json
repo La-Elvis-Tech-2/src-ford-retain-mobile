@@ -1,0 +1,150 @@
+{
+	"$schema": "https://biomejs.dev/schemas/2.5.14/schema.json",
+	"vcs": {
+		"enabled": true,
+		"clientKind": "git",
+		"useIgnoreFile": true
+	},
+	"files": {
+		"ignoreUnknown": true,
+		"includes": [
+			"**",
+			"!**/node_modules",
+			"!**/.expo",
+			"!**/dist",
+			"!**/android",
+			"!**/ios",
+			"!**/expo-env.d.ts",
+			"!**/pnpm-lock.yaml"
+		]
+	},
+	"formatter": {
+		"enabled": true,
+		"indentStyle": "tab",
+		"indentWidth": 2,
+		"lineWidth": 120,
+		"lineEnding": "lf",
+		"bracketSpacing": true,
+		"attributePosition": "auto",
+		"expand": "auto"
+	},
+	"javascript": {
+		"formatter": {
+			"quoteStyle": "single",
+			"jsxQuoteStyle": "single",
+			"quoteProperties": "asNeeded",
+			"semicolons": "always",
+			"trailingCommas": "all",
+			"arrowParentheses": "always",
+			"bracketSameLine": false
+		},
+		"globals": ["__DEV__"]
+	},
+	"json": {
+		"formatter": {
+			"trailingCommas": "none"
+		}
+	},
+	"css": {
+		"formatter": {
+			"quoteStyle": "single"
+		}
+	},
+	"linter": {
+		"enabled": true,
+		"domains": {
+			"react": "recommended"
+		},
+		"rules": {
+			"preset": "recommended",
+			"complexity": {
+				"noUselessFragments": "error",
+				"noUselessStringConcat": "error",
+				"noUselessUndefinedInitialization": "error",
+				"useFlatMap": "error",
+				"useOptionalChain": "error",
+				"useSimplifiedLogicExpression": "error"
+			},
+			"correctness": {
+				"noUnusedImports": "error",
+				"noUnusedVariables": "error",
+				"noUnusedFunctionParameters": "error",
+				"noUnusedPrivateClassMembers": "error",
+				"useExhaustiveDependencies": "error"
+			},
+			"performance": {
+				"noAccumulatingSpread": "error",
+				"noDelete": "error"
+			},
+			"style": {
+				"noNegationElse": "error",
+				"noNonNullAssertion": "error",
+				"noParameterAssign": "error",
+				"noUselessElse": "error",
+				"noYodaExpression": "error",
+				"useCollapsedElseIf": "error",
+				"useConsistentArrayType": { "level": "error", "options": { "syntax": "shorthand" } },
+				"useConst": "error",
+				"useDefaultParameterLast": "error",
+				"useImportType": "error",
+				"useNodejsImportProtocol": "error",
+				"useSelfClosingElements": "error",
+				"useShorthandAssign": "error",
+				"useShorthandFunctionType": "error",
+				"useTemplate": "error",
+				"useThrowOnlyError": "error"
+			},
+			"suspicious": {
+				"noArrayIndexKey": "error",
+				"noEmptyBlockStatements": "error",
+				"noExplicitAny": "error",
+				"useAwait": "error",
+				"noConsole": {
+					"level": "error",
+					"options": {
+						"allow": ["warn", "error"]
+					}
+				}
+			},
+			"nursery": {
+				"useSortedClasses": {
+					"level": "error",
+					"options": {
+						"attributes": ["className"],
+						"functions": ["cn", "clsx", "cva"]
+					}
+				}
+			}
+		}
+	},
+	"assist": {
+		"enabled": true,
+		"actions": {
+			"source": {
+				"organizeImports": "on"
+			}
+		}
+	},
+	"overrides": [
+		{
+			"includes": ["**/*.css"],
+			"linter": {
+				"rules": {
+					"suspicious": {
+						"noUnknownAtRules": "off"
+					}
+				}
+			}
+		},
+		{
+			"includes": ["*.js", "metro.config.js", "babel.config.js", "tailwind.config.js"],
+			"linter": {
+				"rules": {
+					"style": {
+						"useNodejsImportProtocol": "off"
+					}
+				}
+			}
+		}
+	]
+}

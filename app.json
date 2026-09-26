@@ -1,0 +1,53 @@
+{
+	"expo": {
+		"name": "Ford Retain",
+		"slug": "ford-retain",
+		"version": "1.0.0",
+		"orientation": "portrait",
+		"scheme": "fordretain",
+		"userInterfaceStyle": "light",
+		"backgroundColor": "#F2F3F6",
+		"primaryColor": "#00095B",
+		"platforms": ["ios", "android"],
+		"ios": {
+			"bundleIdentifier": "com.fordretain.app",
+			"supportsTablet": false,
+			"infoPlist": {
+				"ITSAppUsesNonExemptEncryption": false,
+				"CFBundleDevelopmentRegion": "pt-BR",
+				"CFBundleLocalizations": ["pt-BR"]
+			}
+		},
+		"android": {
+			"package": "com.fordretain.app",
+			"versionCode": 1,
+			"predictiveBackGestureEnabled": false,
+			"softwareKeyboardLayoutMode": "resize",
+			"permissions": [],
+			"blockedPermissions": [
+				"android.permission.READ_EXTERNAL_STORAGE",
+				"android.permission.WRITE_EXTERNAL_STORAGE",
+				"android.permission.RECORD_AUDIO",
+				"android.permission.SYSTEM_ALERT_WINDOW"
+			]
+		},
+		"plugins": [
+			"expo-router",
+			"expo-secure-store",
+			"expo-font",
+			"expo-system-ui",
+			[
+				"expo-splash-screen",
+				{
+					"backgroundColor": "#F2F3F6"
+				}
+			]
+		],
+		"experiments": {
+			"typedRoutes": true
+		},
+		"extra": {
+			"router": {}
+		}
+	}
+}
