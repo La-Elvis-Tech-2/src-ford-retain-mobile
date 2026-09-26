@@ -1,0 +1,45 @@
+import { ActivityIndicator, View } from 'react-native';
+import { COLORS } from '@/theme/colors';
+import { useScaler } from '@/theme/scale';
+import { Button } from './button';
+import { Text } from './text';
+
+export type QueryStateProps = {
+	/** Sem erro, é o "carregando". */
+	error?: unknown;
+	onRetry?: () => void;
+};
+
+/**
+ * O lugar de um bloco que ainda não chegou — carregando ou com erro.
+ *
+ * O erro sempre oferece "Tentar de novo": uma tela de carro sem dados e sem
+ * saída é uma tela que a pessoa fecha e não abre mais.
+ */
+export function QueryState({ error, onRetry }: QueryStateProps) {
+	const px = useScaler();
+
+	if (!error) {
+		return (
+			<View className='items-center justify-center' style={{ paddingVertical: px(40) }}>
+				<ActivityIndicator color={COLORS.accent} accessibilityLabel='Carregando' />
+			</View>
+		);
+	}
+
+	return (
+		<View className='items-center' style={{ paddingVertical: px(32), gap: px(8) }}>
+			<Text variant='subtitle' className='text-center'>
+				Não conseguimos ler seu carro agora
+			</Text>
+			<Text variant='muted' className='text-center'>
+				Confira a conexão e tente de novo em instantes.
+			</Text>
+			{onRetry ? (
+				<View style={{ paddingTop: px(4) }}>
+					<Button label='Tentar de novo' variant='outline' size='sm' onPress={onRetry} />
+				</View>
+			) : null}
+		</View>
+	);
+}
