@@ -2,68 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
-/*
- * Paleta do app — ÚNICO lugar onde cores cruas existem (o espelho em JS, para
- * as APIs que não aceitam classe, é src/theme/colors.ts).
- *
- * Valores em HSL sem a função `hsl()`, consumidos por tailwind.config.js como
- * `hsl(var(--token))`.
- *
- * Origem: a identidade da Ford. O azul-marinho é o Ford Blue da marca; o azul
- * vivo é o dos links e controles do ford.com; os cinzas são neutros e frios,
- * como o fundo das vitrines de veículo do site; os três status seguem os tons
- * de sucesso, cuidado e erro do Ford Design System.
- *
- * Todo token usado como TEXTO passa 4.5:1 sobre o branco, sobre o fundo e
- * sobre o próprio tom suave (o selo de status em corpo 11).
- */
 @layer base {
 	:root {
-		/* #F2F3F6 — cinza da página, por baixo dos cartões brancos */
 		--background: 225 18.2% 95.7%;
-		/* #101430 — tinta principal: quase preto, puxado para o azul da marca */
 		--foreground: 232.5 50% 12.5%;
-		/* #FFFFFF — cartões, barra de abas e folhas */
 		--card: 0 0% 100%;
 
-		/* #00095B — Ford Blue: a ação principal de cada tela */
 		--primary: 234.1 100% 17.8%;
 		--primary-foreground: 0 0% 100%;
-		/* #0562D2 — azul vivo do ford.com: links, ícones ativos, contadores (5.7:1) */
 		--accent: 212.8 95.3% 42.2%;
-		/* #E8F1FE — fundo do que é do assistente e dos selos azuis */
 		--accent-soft: 215.5 91.7% 95.3%;
 
-		/* #EDEFF3 — botão cinza em pílula ("Compartilhar") */
 		--secondary: 220 20% 94.1%;
-		/* #2E3345 — texto corrido um degrau abaixo da tinta principal */
 		--secondary-foreground: 227 20% 22.5%;
 
-		/* #E4E6EB — trilhos de barra e do medidor */
 		--muted: 222.9 14.9% 90.8%;
-		/* #5B6172 — texto de apoio, 6.1:1 no branco */
 		--muted-foreground: 224.3 11.2% 40.2%;
-		/* #9AA0AD — só decorativo (2.6:1): nunca carrega informação sozinho */
 		--subtle-foreground: 221.1 10.4% 64.1%;
 
-		/* #E3E5EA */
 		--border: 222.9 14.3% 90.4%;
-		/* #F6F7F9 e #D8DCE3 — campo de texto */
 		--field: 220 20% 97.1%;
 		--field-border: 218.2 16.4% 86.9%;
 
-		/*
-		 * Os três estados de um componente do carro — em dia, atenção, urgente.
-		 * Cada um tem a cor de TEXTO (forte) e a de FUNDO (suave). Status nunca
-		 * depende só da cor: sempre vem com ícone e rótulo junto.
-		 */
-		/* #097A3C / #E6F4EC */
 		--positive: 147.1 86.3% 25.7%;
 		--positive-soft: 145.7 38.9% 92.9%;
-		/* #A84700 / #FDF0E5 */
 		--warning: 25.4 100% 32.9%;
 		--warning-soft: 27.5 85.7% 94.5%;
-		/* #C42B10 / #FCEAE6 */
 		--negative: 9 84.9% 41.6%;
 		--negative-soft: 10.9 78.6% 94.5%;
 	}

@@ -7,10 +7,6 @@ import { ROUTES } from '@/routes/routes';
 import { ITEM_GAP, SECTION_GAP } from '@/theme/layout';
 import { useScaler } from '@/theme/scale';
 
-/**
- * Rota inexistente — normalmente um link `fordretain://` desatualizado.
- * `replace` e não `push`: a rota quebrada não deve ficar na pilha.
- */
 export default function NotFoundScreen() {
 	const router = useRouter();
 	const px = useScaler();

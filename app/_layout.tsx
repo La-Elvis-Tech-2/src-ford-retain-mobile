@@ -16,17 +16,9 @@ import { APP_FONTS } from '@/theme/fonts';
 import { ITEM_GAP, SECTION_GAP } from '@/theme/layout';
 import { useScaler } from '@/theme/scale';
 
-// Em escopo global e sem await, como a documentação do expo-splash-screen pede:
-// o splash nativo tem que ser segurado antes do primeiro render. O `.catch`
-// evita a rejeição não tratada quando o splash já foi escondido (relançar o
-// bundle em dev, retomar o app).
 SplashScreen.preventAutoHideAsync().catch(() => undefined);
 SplashScreen.setOptions({ duration: 250, fade: true });
 
-/**
- * Última rede de proteção contra erro de render. Sem ela, em release, a tela
- * fica branca e o app parece travado.
- */
 export function ErrorBoundary({ error, retry }: ErrorBoundaryProps) {
 	return (
 		<AppProviders>
@@ -37,7 +29,6 @@ export function ErrorBoundary({ error, retry }: ErrorBoundaryProps) {
 	);
 }
 
-/** Separado para poder usar `useScaler`, que só existe dentro dos providers. */
 function ErrorBoundaryContent({ error, retry }: ErrorBoundaryProps) {
 	const px = useScaler();
 
@@ -55,22 +46,10 @@ function ErrorBoundaryContent({ error, retry }: ErrorBoundaryProps) {
 	);
 }
 
-/**
- * Layout raiz — só infraestrutura. Nenhuma tela aqui.
- *
- * A divisão real acontece nos grupos filhos:
- *   (public)  -> sem carro conectado (abertura e placa)
- *   (private) -> exige sessão: as abas e as telas de pilha
- */
 export default function RootLayout() {
-	// A Archivo é embarcada: a primeira tela só pode ser pintada depois que as
-	// faces estiverem registradas, senão o texto entra na fonte do sistema e
-	// troca no quadro seguinte.
 	const [fontsLoaded, fontError] = useFonts(APP_FONTS);
 	const sessionStatus = useSessionStatus();
 
-	// Erro de fonte não pode prender o app no splash: seguir com a face do
-	// sistema é ruim, ficar preso na tela de abertura é pior.
 	const fontsReady = fontsLoaded || fontError !== null;
 	const isReady = fontsReady && sessionStatus !== 'bootstrapping';
 

@@ -1,15 +1,3 @@
-/**
- * Fonte da verdade do design system.
- *
- * As cores NÃO ficam aqui: elas são CSS variables declaradas em `global.css`,
- * o que o NativeWind v4 suporta em nativo. Um lugar só para trocar a paleta.
- *
- * As fontes também não: cada peso da Archivo é uma FAMÍLIA embarcada própria,
- * então as classes de peso do Tailwind não selecionam nada — quem resolve é
- * `FONT_STYLE` em src/theme/fonts.ts, aplicado pelo `Text`.
- */
-
-/** @type {import('tailwindcss').Config} */
 module.exports = {
 	content: ['./app/**/*.{ts,tsx}', './src/**/*.{ts,tsx}'],
 	presets: [require('nativewind/preset')],
