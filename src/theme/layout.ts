@@ -1,15 +1,14 @@
 /**
  * Medidas de layout compartilhadas entre telas.
  *
- * Os valores estão em pontos do frame de referência (393pt, o iPhone do layout
- * da home) e passam pelo `useScaler` antes de virar pixel — ver
- * src/theme/scale.tsx.
+ * Os valores estão em pontos do frame de design (393pt de largura) e passam
+ * pelo `useScaler` antes de virar pixel — ver src/theme/scale.tsx.
  *
  * Espaçamento de tela mora AQUI, não em classe do Tailwind: as utilitárias
  * (`p-4`, `gap-6`) são pixel fixo e não acompanham a escala do aparelho.
  */
 
-/** Margem lateral de toda tela. No layout de referência os cartões ficam a 16 da borda. */
+/** Margem lateral de toda tela: os cartões ficam a 16 da borda. */
 export const SCREEN_GUTTER = 16;
 
 /** Respiro no topo de uma tela de conteúdo, abaixo da safe area. */

@@ -86,8 +86,8 @@ export type HealthOrbProps = {
 };
 
 /**
- * O orbe — a esfera de barras verticais do layout de referência, nos azuis
- * da Ford.
+ * O orbe — a esfera de barras verticais que resume a saúde do carro, nos
+ * azuis da Ford.
  *
  * As barras respiram devagar, cada uma na sua fase. A animação roda inteira
  * na thread de UI (Reanimated), e quem pediu "reduzir movimento" no sistema

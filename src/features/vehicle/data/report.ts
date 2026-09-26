@@ -1,12 +1,11 @@
 import type { HealthReport } from '../types';
 
 /**
- * O laudo da Ranger do cenário "conectado" do site (ford/src/data/mock.ts):
- * mesmos componentes, mesmas medidas, mesmas explicações.
+ * O laudo de exemplo da Ranger: os mesmos componentes, medidas e explicações
+ * do laudo web que o cliente recebe pelo WhatsApp.
  *
- * O que o site não tinha e o app precisa é a NOTA de cada componente — o
- * site pintava por status, o app desenha barras e variações. As notas foram
- * escolhidas para cair no mesmo status que o site mostra (ver `statusOf`):
+ * O app acrescenta a NOTA de cada componente, que alimenta as barras e as
+ * variações. As notas caem no mesmo status do laudo web (ver `statusOf`):
  * óleo e pastilha urgentes, filtros e bateria em atenção, o resto em dia.
  *
  * TODO(api): trocar pela leitura dos módulos que o backend da rede devolver.

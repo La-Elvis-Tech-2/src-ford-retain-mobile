@@ -21,11 +21,11 @@ import { ProvenanceCard } from './provenance-card';
 const ORB_SIZE = 140;
 
 /**
- * A home — o layout de referência, com o carro no lugar da pessoa.
+ * A home — a saúde do carro em uma tela.
  *
  * Em cima, o PAINEL BRANCO que continua a faixa branca da barra de status e
- * termina em cantos arredondados: a marca e o sino, o orbe com a saúde geral, os quatro
- * sistemas e a frase do assistente. Embaixo, sobre o cinza, o cartão de
+ * termina em cantos arredondados: a marca e o sino, o orbe com a saúde geral,
+ * os quatro sistemas e a frase do assistente. Embaixo, sobre o cinza, o cartão de
  * procedência e as novidades.
  */
 export function HomeScreen() {
