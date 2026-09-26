@@ -1,6 +1,7 @@
 import { useFocusEffect } from 'expo-router';
 import { useCallback, useRef } from 'react';
-import { KeyboardAvoidingView, Platform, ScrollView, View } from 'react-native';
+import { Platform, ScrollView, View } from 'react-native';
+import { KeyboardAvoiding } from '@/components/layout/keyboard-avoiding';
 import { Screen } from '@/components/layout/screen';
 import { useTabBarOverlap } from '@/components/layout/tab-bar';
 import { Text } from '@/components/ui/text';
@@ -46,7 +47,7 @@ export function AssistantScreen() {
 
 	return (
 		<Screen>
-			<KeyboardAvoidingView className='flex-1' behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
+			<KeyboardAvoiding>
 				<View className='flex-row items-center' style={{ gap: px(10), paddingVertical: px(8) }}>
 					<AssistantAvatar size={38} />
 					<View className='flex-1'>
@@ -87,7 +88,7 @@ export function AssistantScreen() {
 					<SuggestionChips suggestions={SUGGESTIONS} onPick={send} disabled={isReplying} />
 					<ChatComposer onSend={send} busy={isReplying} />
 				</View>
-			</KeyboardAvoidingView>
+			</KeyboardAvoiding>
 		</Screen>
 	);
 }

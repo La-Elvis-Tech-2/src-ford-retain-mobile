@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { KeyboardAvoidingView, Platform, TextInput, View } from 'react-native';
+import { TextInput, View } from 'react-native';
+import { KeyboardAvoiding } from '@/components/layout/keyboard-avoiding';
 import { Screen } from '@/components/layout/screen';
 import { ScreenHeader } from '@/components/layout/screen-header';
 import { Button } from '@/components/ui/button';
@@ -46,7 +47,7 @@ export function ConnectScreen() {
 
 	return (
 		<Screen>
-			<KeyboardAvoidingView className='flex-1' behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
+			<KeyboardAvoiding>
 				<ScreenHeader />
 
 				<View className='flex-1' style={{ paddingTop: px(SCREEN_TOP_SPACING), gap: px(20) }}>
@@ -104,7 +105,7 @@ export function ConnectScreen() {
 				<View style={{ paddingBottom: px(SCREEN_BOTTOM_SPACING) }}>
 					<Button size='lg' label='Conectar' disabled={!valid} loading={loading} onPress={submit} />
 				</View>
-			</KeyboardAvoidingView>
+			</KeyboardAvoiding>
 		</Screen>
 	);
 }
