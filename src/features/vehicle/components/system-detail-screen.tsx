@@ -88,7 +88,12 @@ export function SystemDetailScreen() {
 						<View className='flex-1' style={{ gap: px(4) }}>
 							<View className='flex-row items-baseline' style={{ gap: px(6) }}>
 								<Text variant='score'>{system.score}%</Text>
-								<Text variant='muted' font='semibold' className={cn(deltaClass(system.delta))}>
+								{/*
+								 * `flex-1`: com a largura medida do próprio texto, o Android
+								 * arredondava para baixo e quebrava o "semana" numa segunda
+								 * linha que a altura de uma linha cortava.
+								 */}
+								<Text variant='muted' font='semibold' className={cn('flex-1', deltaClass(system.delta))}>
 									{formatDelta(system.delta)} na semana
 								</Text>
 							</View>
