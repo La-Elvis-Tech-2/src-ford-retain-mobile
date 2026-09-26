@@ -68,6 +68,9 @@ export function AssistantScreen() {
 					keyboardShouldPersistTaps='handled'
 					// Cada fala nova empurra a conversa para o fim, como em qualquer chat.
 					onContentSizeChange={() => scroll.current?.scrollToEnd({ animated: true })}
+					// E quando a área visível muda de altura (o teclado abrindo), a última fala
+					// continua à vista, logo acima do campo.
+					onLayout={() => scroll.current?.scrollToEnd({ animated: true })}
 				>
 					<Text variant='caption' className='self-center'>
 						Hoje
