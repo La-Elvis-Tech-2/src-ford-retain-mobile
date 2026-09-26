@@ -39,7 +39,8 @@ type Rule = { match: RegExp; reply: AssistantReply };
  * Respostas por palavra-chave, na ordem: a primeira regra que casar responde.
  * As mais específicas vêm antes ("esperar" antes de "pastilha"), senão "dá para
  * esperar a pastilha?" cairia na explicação da pastilha, e não no custo de
- * adiar.
+ * adiar. Pelo mesmo motivo a revenda vem antes do preço: "quanto vale meu
+ * histórico?" tem o "quanto" do preço, mas pergunta da revenda.
  *
  * TODO(api): trocar pela resposta do modelo, que lê o laudo inteiro. Os
  * números aqui repetem o laudo de src/features/vehicle/data/report.ts.
@@ -60,16 +61,16 @@ const RULES: Rule[] = [
 		},
 	},
 	{
-		match: /quanto|preço|preco|custa|valor da revisão|orçamento|orcamento/,
-		reply: {
-			text: 'O pacote sai por R$ 1.595 com preço fechado: R$ 1.305 em peças originais e R$ 290 de mão de obra, 1h30 de serviço. Garantia de 1 ano em toda a rede.',
-			action: { label: 'Agendar revisão', route: ROUTES.service },
-		},
-	},
-	{
 		match: /revenda|vender|histórico|historico|vale/,
 		reply: {
 			text: 'Sua Ranger tem 4 revisões registradas no chassi. Com o histórico Ford completo, ela vale até R$ 7.400 a mais na revenda do que a média do modelo sem histórico.',
+		},
+	},
+	{
+		match: /quanto (sai|fica|é|pago)|preço|preco|custa|valor da revisão|orçamento|orcamento/,
+		reply: {
+			text: 'O pacote sai por R$ 1.595 com preço fechado: R$ 1.305 em peças originais e R$ 290 de mão de obra, 1h30 de serviço. Garantia de 1 ano em toda a rede.',
+			action: { label: 'Agendar revisão', route: ROUTES.service },
 		},
 	},
 	{
