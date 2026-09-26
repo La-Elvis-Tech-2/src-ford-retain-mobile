@@ -47,7 +47,11 @@
 			"typedRoutes": true
 		},
 		"extra": {
-			"router": {}
-		}
+			"router": {},
+			"eas": {
+				"projectId": "be12742a-937c-4303-b7e0-f3b9a6e600e0"
+			}
+		},
+		"owner": "vitoreskes"
 	}
 }
